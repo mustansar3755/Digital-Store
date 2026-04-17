@@ -10,7 +10,8 @@ import AdminLayout from './Layout/AdminLayout'
 import ProtectRoute from './components/ProtectRoute'
 import Dashboard from './pages/Admin/Dashboard' // Example component
 import Users from './pages/Admin/Users'
-import Products from './pages/Admin/Products'
+import AddProducts from './pages/Admin/AddProducts'
+
 
 const App = () => {
   return (
@@ -31,7 +32,7 @@ const App = () => {
         <Route element={<ProtectRoute />}>
           <Route path='/admin/dashboard' element={<Dashboard />} />
           <Route path='/admin/users' element={<Users />} />
-          <Route path='/admin/products' element={<Products />} />
+          <Route path='/admin/add-products' element={<AddProducts />} />
           {/* Default admin redirect: Agar sirf /admin likha ho */}
           <Route path='/admin' element={<Navigate to="/admin/dashboard" replace />} />
         </Route>
