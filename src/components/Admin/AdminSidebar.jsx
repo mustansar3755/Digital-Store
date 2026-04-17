@@ -20,8 +20,8 @@ const AdminSidebar = ({ onLogout }) => {
     },
     { name: "Users", path: "/admin/users", icon: <Users size={20} /> },
     {
-      name: "Products",
-      path: "/admin/products",
+      name: "Add Products",
+      path: "/admin/add-products",
       icon: <ShoppingBag size={20} />,
     },
     { name: "Settings", path: "/admin/settings", icon: <Settings size={20} /> },

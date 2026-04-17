@@ -19,14 +19,15 @@ const AdminLogin = () => {
     e.preventDefault();
 
     // 1. Admin dedicated data nikalna (Normal 'user' se alag)
-    const savedAdmin = JSON.parse(localStorage.getItem("adminData"));
+    const savedAdmin = JSON.parse(localStorage.getItem("adminLogin"));
 
     // 2. Verification Logic
     if (!savedAdmin) {
       // Agar koi admin registered nahi hai, toh ek default check ya error
       return toast.error("Admin account not found!");
     }
-
+    
+    console.log(savedAdmin)
     if (savedAdmin.email === email && savedAdmin.password === password) {
       // Success logic
       toast.success(`Admin Login Successful!`);

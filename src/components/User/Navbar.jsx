@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart, User, Search, Menu, X } from 'lucide-react';
+import { useAuth } from '../../App/AppContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const {cart} = useAuth();
+
+  console.log(cart)
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
@@ -41,7 +46,7 @@ const Navbar = () => {
               <Link to="/cart" className="text-gray-600 hover:text-indigo-600 relative">
                 <ShoppingCart size={24} />
                 <span className="absolute -top-2 -right-2 bg-indigo-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  3
+                 {cart}
                 </span>
               </Link>
             </div>
