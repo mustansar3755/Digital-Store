@@ -12,6 +12,7 @@ import Dashboard from './pages/Admin/Dashboard' // Example component
 import Users from './pages/Admin/Users'
 import AddProducts from './pages/Admin/AddProducts'
 import Cart from './pages/User/Cart'
+import Checkout from './pages/User/Checkout'
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
         <Route path='/about' element={<About />} />
         <Route path='/register' element={<Register />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/checkout' element={<Checkout />} />
         <Route path='/login' element={<Login />} />
       </Route>
 

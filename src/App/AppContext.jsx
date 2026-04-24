@@ -7,26 +7,53 @@ export const AuthProvider = ({ children }) => {
   const [cart, setCart] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  // 1. Jab App load ho, tab localStorage se purana count nikalna
+  // 🔥 CENTRAL CART SYNC FUNCTION
+  const syncCart = () => {
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    setCart(cartItems.length);
+  };
+
+  // App load pe sync
   useEffect(() => {
-    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCart(existingCart.length);
+    syncCart();
   }, []);
 
-  // 2. Sahi handleCart function jo count ko sync rakhe
-  const handleCart = (newCount) => {
-    // Agar hum directly newCount bhej rahe hain (recommended)
-    if (typeof newCount === "number") {
-      setCart(newCount);
-    } else {
-      // Agar purana tareeka use karna hai toh localStorage se length nikalen
-      const updatedCart = JSON.parse(localStorage.getItem("cart")) || [];
-      setCart(updatedCart.length);
-    }
+  // 🟢 ADD ITEM
+  const addToCart = (item) => {
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    cartItems.push(item);
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+    syncCart();
   };
+
+  // 🔴 REMOVE ITEM
+  const removeFromCart = (id) => {
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    const updated = cartItems.filter((item) => item.id !== id);
+    localStorage.setItem("cart", JSON.stringify(updated));
+    syncCart();
+  };
+
+  // 🧹 CLEAR CART (checkout ke liye)
+  const clearCart = () => {
+    localStorage.removeItem("cart");
+    syncCart();
+  };
+
   return (
     <AppContext.Provider
-      value={{ user, setUser, loading, setLoading, cart, setCart, handleCart }}
+      value={{
+        user,
+        setUser,
+        loading,
+        setLoading,
+        cart,
+        setCart,
+        syncCart,
+        addToCart,
+        removeFromCart,
+        clearCart,
+      }}
     >
       {children}
     </AppContext.Provider>
