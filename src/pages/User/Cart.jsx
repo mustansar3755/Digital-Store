@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../App/AppContext';
 
 const Cart = () => {
@@ -9,6 +9,8 @@ const Cart = () => {
   const [discount, setDiscount] = useState(0);
 
   const { setCart } = useAuth();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('cart')) || [];
@@ -123,6 +125,9 @@ const Cart = () => {
             </div>
 
             <button
+            onClick={()=>{
+              navigate('/checkout')
+            }}
               disabled={cartItems.length === 0}
               className="w-full bg-indigo-600 text-white py-3 mt-4 rounded-lg disabled:bg-gray-400"
             >
