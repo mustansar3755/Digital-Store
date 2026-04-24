@@ -10,7 +10,8 @@ const AddProducts = () => {
     price: '',
     category: '',
     imageUrl: '',
-    description: ''
+    description: '',
+    cupon_code: ''
   });
 
   const handleChange = (e) => {
@@ -36,7 +37,7 @@ const AddProducts = () => {
     toast.success("Product Added Successfully!");
     
     // Form clear karein
-    setProduct({ title: '', price: '', category: '', imageUrl: '', description: '' });
+    setProduct({ title: '', price: '', category: '', imageUrl: '', description: '',cupon_code });
   };
 
   return (
@@ -109,6 +110,18 @@ const AddProducts = () => {
               value={product.imageUrl}
               onChange={handleChange}
               placeholder="https://images.com/product.jpg"
+              className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700">Cupon Code:</label>
+            <input
+             type='text'
+              name="cupon_code"
+              value={product.cupon_code}
+              onChange={handleChange}
+              placeholder="Set Cupon Code"
               className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"
               required
             />

@@ -11,6 +11,7 @@ import ProtectRoute from './components/ProtectRoute'
 import Dashboard from './pages/Admin/Dashboard' // Example component
 import Users from './pages/Admin/Users'
 import AddProducts from './pages/Admin/AddProducts'
+import Cart from './pages/User/Cart'
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/cart' element={<Cart />} />
         <Route path='/login' element={<Login />} />
       </Route>
 
